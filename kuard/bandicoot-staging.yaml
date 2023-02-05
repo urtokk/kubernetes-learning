@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bandicoot-staging
+  labels:
+    app: bandicoot
+    ver: "2"
+    env: staging
+spec:
+  selector:
+    matchLabels:
+      app: bandicoot
+      ver: "2"
+      env: staging
+  template:
+    metadata:
+      labels:
+        app: bandicoot
+        ver: "2"
+        env: staging
+    spec:
+      containers:
+      - name: bandicoot
+        image: gcr.io/kuar-demo/kuard-amd64:blue
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
